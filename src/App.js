@@ -7,7 +7,6 @@ function App()
   const [search, setSearch] = useState();
   const [isLoading, setIsLoading] = useState(false);
   const [results, setSetResult] = useState([])
-  console.log(process.env.REACT_API)
   useEffect(() =>
   {
     const dataRequest = {
@@ -33,11 +32,8 @@ function App()
           method: 'POST'
         })
         const data = await res.json();
-        // console.log(data.choices)
-        // setData(data);
         const newObject = { text: search, list: data.choices, id: Date.now() }
         setSetResult([...results, newObject])
-        // console.log(results)
         setIsLoading(false);
 
       }
